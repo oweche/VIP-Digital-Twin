@@ -2,7 +2,7 @@
 
 %% This file contains virtual vehicle configuration information.
 
-%% This file is saved at time 09-Oct-2025 19:02:21
+%% This file is saved at time 26-Oct-2025 21:40:10
                      ConfigInfos.Version = '25.2.0.2998904 (R2025b)';
                    ConfigInfos.SessionID = 'Kart.m';
                    ConfigInfos.LicStatus = [1,1,1,1,1,1,1,1,1];
@@ -22,6 +22,7 @@
 %% Vehicle Configuration
 ConfigInfos.FeatureVariantSelectedMap=containers.Map;
 ConfigInfos.FeatureVariantSelectedMap('Active Differential Control') = 'No Control';
+ConfigInfos.FeatureVariantSelectedMap('ActiveDifferentialControl') = 'No Control';
 ConfigInfos.FeatureVariantSelectedMap('Axle Interconnect') = 'No Interconnect';
 ConfigInfos.FeatureVariantSelectedMap('Battery Management System') = 'Battery Management System';
 ConfigInfos.FeatureVariantSelectedMap('Body and Frame') = 'Vehicle Body 6DOF Longitudinal and Lateral';
@@ -30,14 +31,17 @@ ConfigInfos.FeatureVariantSelectedMap('Brake System') = 'Brake System';
 ConfigInfos.FeatureVariantSelectedMap('DC-DC Converter') = 'HVDCPassThrough';
 ConfigInfos.FeatureVariantSelectedMap('Drive Shaft Torque Routing') = 'One Actuator FWD';
 ConfigInfos.FeatureVariantSelectedMap('Driver') = 'Longitudinal Driver';
-ConfigInfos.FeatureVariantSelectedMap('Drivetrain') = 'Front Wheel Drive';
+ConfigInfos.FeatureVariantSelectedMap('Drivetrain') = 'Rear Wheel Drive';
 ConfigInfos.FeatureVariantSelectedMap('Drivetrain Wheel Speed Route') = 'Bus';
 ConfigInfos.FeatureVariantSelectedMap('Electric Machine 1') = 'Electric Vehicle 1EM - Mapped Motor';
 ConfigInfos.FeatureVariantSelectedMap('Electric Machine 2') = 'Electric Vehicle 2EM - Mapped Motor';
 ConfigInfos.FeatureVariantSelectedMap('Electric Machine 3') = 'Electric Vehicle 3EM Dual Front - Mapped Motor';
 ConfigInfos.FeatureVariantSelectedMap('Electric Machine 4') = 'Electric Vehicle 4EM - Mapped Motor';
 ConfigInfos.FeatureVariantSelectedMap('Electric Motors') = '1EM';
-ConfigInfos.FeatureVariantSelectedMap('Energy Storage') = 'Mapped Battery (Electric Vehicle 1EM)';
+ConfigInfos.FeatureVariantSelectedMap('ElectricMachine2') = 'Electric Vehicle 2EM - Mapped Motor';
+ConfigInfos.FeatureVariantSelectedMap('ElectricMachine3') = 'Electric Vehicle 3EM Dual Front - Mapped Motor';
+ConfigInfos.FeatureVariantSelectedMap('ElectricMachine4') = 'Electric Vehicle 4EM - Mapped Motor';
+ConfigInfos.FeatureVariantSelectedMap('Energy Storage') = 'Ideal Voltage Source';
 ConfigInfos.FeatureVariantSelectedMap('Engine') = 'No Engine';
 ConfigInfos.FeatureVariantSelectedMap('Engine Control Unit') = 'No Engine Controller';
 ConfigInfos.FeatureVariantSelectedMap('Environment') = 'Ambient Conditions';
@@ -45,24 +49,26 @@ ConfigInfos.FeatureVariantSelectedMap('Final Drive') = 'Final Drive';
 ConfigInfos.FeatureVariantSelectedMap('Front Axle Compliances') = 'Axle Compliances';
 ConfigInfos.FeatureVariantSelectedMap('Front Brake Type') = 'Disc';
 ConfigInfos.FeatureVariantSelectedMap('Front Differential System') = 'Open Differential';
-ConfigInfos.FeatureVariantSelectedMap('Front Suspension') = 'Kinematics and Compliance Independent Suspension Front';
-ConfigInfos.FeatureVariantSelectedMap('Front Tire Data') = 'Light passenger car 205/60R15';
+ConfigInfos.FeatureVariantSelectedMap('Front Suspension') = 'MacPherson Front Suspension';
+ConfigInfos.FeatureVariantSelectedMap('Front Tire Data') = 'MF Tires Longitudinal Front';
 ConfigInfos.FeatureVariantSelectedMap('Front Tire and Wheel') = 'MF Tires Longitudinal and Lateral Front';
+ConfigInfos.FeatureVariantSelectedMap('FrontTireData') = 'MF Tires Longitudinal Front';
 ConfigInfos.FeatureVariantSelectedMap('Hitch') = 'Hitch 3DOF';
 ConfigInfos.FeatureVariantSelectedMap('Power Generation') = 'Power Generation';
 ConfigInfos.FeatureVariantSelectedMap('Powertrain') = 'Electric Vehicle 1EM';
 ConfigInfos.FeatureVariantSelectedMap('Rear Axle Compliances') = 'No Axle Compliances';
 ConfigInfos.FeatureVariantSelectedMap('Rear Brake Type') = 'Disc';
-ConfigInfos.FeatureVariantSelectedMap('Rear Differential System') = 'No Differential Rear';
-ConfigInfos.FeatureVariantSelectedMap('Rear Suspension') = 'Kinematics and Compliance Independent Suspension Rear';
+ConfigInfos.FeatureVariantSelectedMap('Rear Differential System') = 'Active Differential Rear';
+ConfigInfos.FeatureVariantSelectedMap('Rear Suspension') = 'Solid Axle Rear Suspension';
 ConfigInfos.FeatureVariantSelectedMap('Rear Tire Data') = 'Light passenger car 205/60R15';
 ConfigInfos.FeatureVariantSelectedMap('Rear Tire and Wheel') = 'MF Tires Longitudinal and Lateral Rear';
 ConfigInfos.FeatureVariantSelectedMap('Refrigeration Loop') = 'System Level';
 ConfigInfos.FeatureVariantSelectedMap('Sensor') = 'IMU Sensor';
-ConfigInfos.FeatureVariantSelectedMap('Steering System') = 'Kinematic Steering';
+ConfigInfos.FeatureVariantSelectedMap('Steering System') = 'Mapped Steering';
 ConfigInfos.FeatureVariantSelectedMap('Suspension System') = 'Suspension System';
 ConfigInfos.FeatureVariantSelectedMap('Thermal Control Unit') = 'No Thermal Control';
 ConfigInfos.FeatureVariantSelectedMap('Thermal System') = 'Constant Temperature';
+ConfigInfos.FeatureVariantSelectedMap('ThermalSystem') = 'Constant Temperature';
 ConfigInfos.FeatureVariantSelectedMap('Tire and Wheel System') = 'Tire and Wheel System';
 ConfigInfos.FeatureVariantSelectedMap('Trailer') = 'No Trailer';
 ConfigInfos.FeatureVariantSelectedMap('Trailer Body') = 'Trailer Body 3DOF';
@@ -145,6 +151,83 @@ ConfigInfos.FeatureVariantSelectedMap('Vehicle Control Unit') = 'EV 1EM with BMS
           ConfigInfos.DataModified{10,4} = 'PlntVehAeroDragCff';
           ConfigInfos.DataModified{10,5} = 'Vehicle Body 6DOF Longitudinal and Lateral';
           ConfigInfos.DataModified{10,6} = 'Body and Frame';
+
+          ConfigInfos.DataModified{11,1} = 'PlntSpMSStiffness';
+          ConfigInfos.DataModified{11,2} = '99999999999999999999999';
+          ConfigInfos.DataModified{11,3} = 'PassVeh.sldd';
+          ConfigInfos.DataModified{11,4} = 'PlntSpMSStiffness';
+          ConfigInfos.DataModified{11,5} = 'MacPherson Front Suspension';
+          ConfigInfos.DataModified{11,6} = 'Front Suspension';
+
+          ConfigInfos.DataModified{12,1} = 'PlntSpMSDamping';
+          ConfigInfos.DataModified{12,2} = '99999999999999999999999';
+          ConfigInfos.DataModified{12,3} = 'PassVeh.sldd';
+          ConfigInfos.DataModified{12,4} = 'PlntSpMSDamping';
+          ConfigInfos.DataModified{12,5} = 'MacPherson Front Suspension';
+          ConfigInfos.DataModified{12,6} = 'Front Suspension';
+
+          ConfigInfos.DataModified{13,1} = 'PlntSpSAStiffness';
+          ConfigInfos.DataModified{13,2} = '99999999999999999999999';
+          ConfigInfos.DataModified{13,3} = 'PassVeh.sldd';
+          ConfigInfos.DataModified{13,4} = 'PlntSpSAStiffness';
+          ConfigInfos.DataModified{13,5} = 'Solid Axle Rear Suspension';
+          ConfigInfos.DataModified{13,6} = 'Rear Suspension';
+
+          ConfigInfos.DataModified{14,1} = 'PlntSpSAMaxHeight';
+          ConfigInfos.DataModified{14,2} = '0';
+          ConfigInfos.DataModified{14,3} = 'PassVeh.sldd';
+          ConfigInfos.DataModified{14,4} = 'PlntSpSAMaxHeight';
+          ConfigInfos.DataModified{14,5} = 'Solid Axle Rear Suspension';
+          ConfigInfos.DataModified{14,6} = 'Rear Suspension';
+
+          ConfigInfos.DataModified{15,1} = 'PlntDiffrntl2Ratio';
+          ConfigInfos.DataModified{15,2} = '1';
+          ConfigInfos.DataModified{15,3} = 'Drivetrain.sldd';
+          ConfigInfos.DataModified{15,4} = 'PlntDiffrntl2Ratio';
+          ConfigInfos.DataModified{15,5} = 'Active Differential Rear';
+          ConfigInfos.DataModified{15,6} = 'Rear Differential System';
+
+          ConfigInfos.DataModified{16,1} = 'PlntEM1TransEff';
+          ConfigInfos.DataModified{16,2} = '1';
+          ConfigInfos.DataModified{16,3} = 'Drivetrain.sldd';
+          ConfigInfos.DataModified{16,4} = 'PlntEM1TransEff';
+          ConfigInfos.DataModified{16,5} = 'Single-Speed Transmission 1EM';
+          ConfigInfos.DataModified{16,6} = 'Transmission';
+
+          ConfigInfos.DataModified{17,1} = 'PlntBattIdealVolt';
+          ConfigInfos.DataModified{17,2} = '48';
+          ConfigInfos.DataModified{17,3} = 'BatteryDCDC.sldd';
+          ConfigInfos.DataModified{17,4} = 'PlntBattIdealVolt';
+          ConfigInfos.DataModified{17,5} = 'Ideal Voltage Source';
+          ConfigInfos.DataModified{17,6} = 'Energy Storage';
+
+          ConfigInfos.DataModified{18,1} = 'PlntSteerGearRatio';
+          ConfigInfos.DataModified{18,2} = '1';
+          ConfigInfos.DataModified{18,3} = 'PassVeh.sldd';
+          ConfigInfos.DataModified{18,4} = 'PlntSteerGearRatio';
+          ConfigInfos.DataModified{18,5} = 'Mapped Steering';
+          ConfigInfos.DataModified{18,6} = 'Steering System';
+
+          ConfigInfos.DataModified{19,1} = 'PlntSteerRackDispBpt';
+          ConfigInfos.DataModified{19,2} = '[-45.00000000 -40.00000000 -35.00000000 -30.00000000 -25.00000000 -20.00000000 -15.00000000 -10.00000000 -7.00000000 -5.00000000 -3.00000000 -1.00000000 0.00000000 1.00000000 3.00000000 5.00000000 7.00000000 10.00000000 15.00000000 20.00000000 25.00000000 30.00000000 35.00000000 40.00000000 45.00000000]';
+          ConfigInfos.DataModified{19,3} = 'PassVeh.sldd';
+          ConfigInfos.DataModified{19,4} = 'PlntSteerRackDispBpt';
+          ConfigInfos.DataModified{19,5} = 'Mapped Steering';
+          ConfigInfos.DataModified{19,6} = 'Steering System';
+
+          ConfigInfos.DataModified{20,1} = 'PlntSteerLftWhlAngTbl';
+          ConfigInfos.DataModified{20,2} = '[-0.73652894 -0.65100781 -0.56723201 -0.48345620 -0.40317106 -0.32114058 -0.24085544 -0.16057029 -0.11170107 -0.08028515 -0.05235988 -0.01570796 0.00000000 0.01570796 0.05235988 0.08028515 0.12217305 0.17453293 0.23911008 0.31590459 0.39269908 0.46774824 0.54105207 0.61086524 0.67544242]';
+          ConfigInfos.DataModified{20,3} = 'PassVeh.sldd';
+          ConfigInfos.DataModified{20,4} = 'PlntSteerLftWhlAngTbl';
+          ConfigInfos.DataModified{20,5} = 'Mapped Steering';
+          ConfigInfos.DataModified{20,6} = 'Steering System';
+
+          ConfigInfos.DataModified{21,1} = 'PlntSteerRghtWhlAngTbl';
+          ConfigInfos.DataModified{21,2} = '[-0.54454273 -0.51138147 -0.46251225 -0.41364303 -0.35779250 -0.29670597 -0.22863807 -0.17453293 -0.11030300 -0.07853982 -0.04712389 -0.01570796 0.00000000 0.01570796 0.04886922 0.08028515 0.11344640 0.15707963 0.23911008 0.31415927 0.38397244 0.44854962 0.50789081 0.56025069 0.60911991]';
+          ConfigInfos.DataModified{21,3} = 'PassVeh.sldd';
+          ConfigInfos.DataModified{21,4} = 'PlntSteerRghtWhlAngTbl';
+          ConfigInfos.DataModified{21,5} = 'Mapped Steering';
+          ConfigInfos.DataModified{21,6} = 'Steering System';
 
 %% Test Plan
           ConfigInfos.TestPlan{1}.Source = 'Scenario.sldd';
